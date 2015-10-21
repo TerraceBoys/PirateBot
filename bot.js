@@ -31,7 +31,7 @@ function respond() {
   } 
   // startPurge begins purge countdown
   // everyone who doesn't say "spare me" is removed from the group
-  else if(request.text && startPurge.test(request.text)) {
+  else if (request.text && startPurge.test(request.text)) {
     this.res.writeHead(200);
     postMessage("PURGE COUNTDOWN INITIATED");
     postMessage("5");
