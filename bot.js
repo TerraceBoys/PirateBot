@@ -24,14 +24,11 @@ function respond() {
   var startPurge = /^activate purge countdown/i;
 
   // statusCheck
-  if(request.text && statusCheck.test(request.text)) {
+  if (request.text && statusCheck.test(request.text)) {
     this.res.writeHead(200);
     postMessage("I WILL KILL YOU ALL");
     this.res.end();
-  } 
-  // startPurge begins purge countdown
-  // everyone who doesn't say "spare me" is removed from the group
-  else if (request.text && startPurge.test(request.text)) {
+  } else if (request.text && startPurge.test(request.text)) {
     this.res.writeHead(200);
     postMessage("PURGE COUNTDOWN INITIATED");
     postMessage("5");
@@ -41,9 +38,7 @@ function respond() {
     postMessage("1");
     postMessage("jk");
     this.res.end();
-  } 
-  // no matches to the regex expressions
-  else {
+  } else {
     console.log("don't care");
     this.res.writeHead(200);
     this.res.end();
