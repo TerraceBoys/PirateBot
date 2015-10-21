@@ -3,13 +3,27 @@ var cool = require('cool-ascii-faces');
 
 var botID = process.env.BOT_ID;
 
-function respond() {
-  var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /^\/cool guy$/;
+// Request attributes
+// {"attachments":[],
+// "avatar_url":"http://i.groupme.com/200x132.jpeg.45cfd3ac5ba242648f3961b89ce19c68",
+// "created_at":1445374076,
+// "group_id":"17311868",
+// "id":"144537407603506323",
+// "name":"Branden Rodgers",
+// "sender_id":"21769018",
+// "sender_type":"user",
+// "source_guid":"9f0deb7bfc9b2d62919bff16c7828c09",
+// "system":false,
+// "text":"brobot?",
+// "user_id":"21769018"}
 
-  if(request.text && botRegex.test(request.text)) {
+function respond() {
+  var request = JSON.parse(this.req.chunks[0]);
+  var statusCheck = /^purgebot\?/i;
+
+  if(request.text && statusCheck.test(request.text)) {
     this.res.writeHead(200);
-    postMessage();
+    postMessage("I WILL KILL YOU ALL");
     this.res.end();
   } else {
     console.log("don't care");
@@ -18,10 +32,9 @@ function respond() {
   }
 }
 
-function postMessage() {
-  var botResponse, options, body, botReq;
-
-  botResponse = cool();
+function postMessage(message) {
+  var botResponse = message;
+  var options, body, botReq;
 
   options = {
     hostname: 'api.groupme.com',
