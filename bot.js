@@ -1,6 +1,7 @@
 var HTTPS = require('https');
 
 var botID = process.env.BOT_ID;
+var safeFromPurge = [];
 
 // Request attributes
 // {"attachments":[],
@@ -19,12 +20,30 @@ var botID = process.env.BOT_ID;
 function respond() {
   var request = JSON.parse(this.req.chunks[0]);
   var statusCheck = /^purgebot\?/i;
+  var avoidPurge = /^spare me/i;
+  var startPurge = /^activate purge countdown/i;
 
+  // statusCheck
   if(request.text && statusCheck.test(request.text)) {
     this.res.writeHead(200);
     postMessage("I WILL KILL YOU ALL");
     this.res.end();
-  } else {
+  } 
+  // startPurge begins purge countdown
+  // everyone who doesn't say "spare me" is removed from the group
+  else if(request.text && startPurge.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("PURGE COUNTDOWN INITIATED");
+    postMessage("5");
+    postMessage("4");
+    postMessage("3");
+    postMessage("2");
+    postMessage("1");
+    postMessage("jk");
+    this.res.end();
+  } 
+  // no matches to the regex expressions
+  else {
     console.log("don't care");
     this.res.writeHead(200);
     this.res.end();
