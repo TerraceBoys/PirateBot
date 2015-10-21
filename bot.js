@@ -31,12 +31,6 @@ function respond() {
   } else if (request.text && startPurge.test(request.text)) {
     this.res.writeHead(200);
     postMessage("PURGE COUNTDOWN INITIATED");
-    postMessage("5");
-    postMessage("4");
-    postMessage("3");
-    postMessage("2");
-    postMessage("1");
-    postMessage("jk");
     this.res.end();
   } else {
     console.log("don't care");
