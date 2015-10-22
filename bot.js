@@ -28,7 +28,7 @@ function respond() {
     this.res.end();
   } else if (request.text && pirateTalk.test(request.text)) {
     this.res.writeHead(200);
-    var textInPirate = talkLikeAPirate(request.replace('arr, ', ''););
+    var textInPirate = talkLikeAPirate(request.text.replace('arr, ', ''););
     postMessage(textInPirate);
     this.res.end();
   } else {

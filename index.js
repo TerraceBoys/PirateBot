@@ -1,8 +1,9 @@
-var http, director, bot, router, server, port;
+var http, director, bot, talkLikeAPirate, router, server, port;
 
-http        = require('http');
-director    = require('director');
-bot         = require('./bot.js');
+http            = require('http');
+talkLikeAPirate = require('talk-like-a-pirate');
+director        = require('director');
+bot             = require('./bot.js');
 
 router = new director.http.Router({
   '/' : {
