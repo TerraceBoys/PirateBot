@@ -1,5 +1,5 @@
 var HTTPS = require('https');
-
+var talkLikeAPirate = require('talk-like-a-pirate');
 var botID = process.env.BOT_ID;
 
 // Request attributes
@@ -19,7 +19,7 @@ var botID = process.env.BOT_ID;
 function respond() {
   var request = JSON.parse(this.req.chunks[0]);
   var statusCheck = /^piratebot\?/i;
-  var pirateTalk = /^arr\,/i;
+  var pirateTalk = /^arr\, /i;
 
   // statusCheck
   if (request.text && statusCheck.test(request.text)) {
@@ -28,7 +28,8 @@ function respond() {
     this.res.end();
   } else if (request.text && pirateTalk.test(request.text)) {
     this.res.writeHead(200);
-    postMessage("ARRRRR");
+    var textInPirate = talkLikeAPirate(request.replace('arr, ', ''););
+    postMessage(textInPirate);
     this.res.end();
   } else {
     console.log("don't care");
