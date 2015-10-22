@@ -1,7 +1,6 @@
 var HTTPS = require('https');
 
 var botID = process.env.BOT_ID;
-var safeFromPurge = [];
 
 // Request attributes
 // {"attachments":[],
@@ -19,18 +18,17 @@ var safeFromPurge = [];
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]);
-  var statusCheck = /^purgebot\?/i;
-  var avoidPurge = /^spare me/i;
-  var startPurge = /^activate purge countdown/i;
+  var statusCheck = /^piratebot\?/i;
+  var pirateTalk = /^arr\,/i;
 
   // statusCheck
   if (request.text && statusCheck.test(request.text)) {
     this.res.writeHead(200);
-    postMessage("I WILL KILL YOU ALL");
+    postMessage("Ahoy Matey");
     this.res.end();
-  } else if (request.text && startPurge.test(request.text)) {
+  } else if (request.text && pirateTalk.test(request.text)) {
     this.res.writeHead(200);
-    postMessage("PURGE COUNTDOWN INITIATED");
+    postMessage("ARRRRR");
     this.res.end();
   } else {
     console.log("don't care");
