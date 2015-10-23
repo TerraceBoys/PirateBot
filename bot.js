@@ -25,9 +25,7 @@ function respond() {
     // statusCheck
     if (request.text && statusCheck.test(request.text)) {
       this.res.writeHead(200);
-      
-        postMessage("Ahoy Matey");
-      
+      postMessage("Ahoy Matey");
       this.res.end(); 
     } else if (request.text && pirateTalk.test(request.text)) {
       this.res.writeHead(200);
