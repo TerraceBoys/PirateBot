@@ -23,9 +23,11 @@ function respond() {
 
   // statusCheck
   if (request.text && statusCheck.test(request.text)) {
-    this.res.writeHead(200);
-    postMessage("Ahoy Matey");
-    this.res.end();
+    setTimeout(function() {
+      this.res.writeHead(200);
+      postMessage("Ahoy Matey");
+      this.res.end();
+    }, 5000);
   } else if (request.text && pirateTalk.test(request.text)) {
     this.res.writeHead(200);
     var textInPirate = talkLikeAPirate(request.text.substring(5));
@@ -71,6 +73,5 @@ function postMessage(message) {
   });
   botReq.end(JSON.stringify(body));
 }
-
 
 exports.respond = respond;
