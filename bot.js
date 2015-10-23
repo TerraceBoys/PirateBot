@@ -29,9 +29,7 @@ function respond() {
   } else if (request.text && pirateTalk.test(request.text)) {
     this.res.writeHead(200);
     var textInPirate = talkLikeAPirate(request.text.substring(5));
-    setTimeout(function() {
-      postMessage(textInPirate);
-    }, 5000);
+    postMessage(textInPirate);
     this.res.end();
   } else {
     console.log("don't care");
