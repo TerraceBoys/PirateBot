@@ -28,8 +28,10 @@ function respond() {
     this.res.end();
   } else if (request.text && pirateTalk.test(request.text)) {
     this.res.writeHead(200);
-    var textInPirate = talkLikeAPirate(request.text.replace('arr, ', ''));
-    postMessage(textInPirate);
+    var textInPirate = talkLikeAPirate(request.text.substring(5));
+    setTimeout(function() {
+      postMessage(textInPirate);
+    }, 1000);
     this.res.end();
   } else {
     console.log("don't care");
