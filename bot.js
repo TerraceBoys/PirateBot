@@ -26,7 +26,7 @@ function respond() {
     this.res.writeHead(200);
     setTimeout(function() {
       postMessage("Ahoy Matey");
-    }, 2000);
+    }, 1500);
     this.res.end(); 
   } else if (request.text && pirateTalk.test(request.text)) {
     this.res.writeHead(200);
