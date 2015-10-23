@@ -21,23 +21,25 @@ function respond() {
   var statusCheck = /^piratebot\?/i;
   var pirateTalk = /^arr\, /i;
 
-  setTimeout(function() {
-    // statusCheck
-    if (request.text && statusCheck.test(request.text)) {
-      this.res.writeHead(200);
+  // statusCheck
+  if (request.text && statusCheck.test(request.text)) {
+    this.res.writeHead(200);
+    setTimeout(function() {
       postMessage("Ahoy Matey");
-      this.res.end(); 
-    } else if (request.text && pirateTalk.test(request.text)) {
-      this.res.writeHead(200);
+    }, 1500);
+    this.res.end(); 
+  } else if (request.text && pirateTalk.test(request.text)) {
+    this.res.writeHead(200);
+    setTimeout(function() {
       var textInPirate = talkLikeAPirate(request.text.substring(5));
       postMessage(textInPirate);
-      this.res.end();
-    } else {
-      console.log("don't care");
-      this.res.writeHead(200);
-      this.res.end();
-    }
-  }, 1500);
+    }, 1500);
+    this.res.end();
+  } else {
+    console.log("don't care");
+    this.res.writeHead(200);
+    this.res.end();
+  }
 }
 
 function postMessage(message) {
