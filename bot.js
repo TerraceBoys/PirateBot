@@ -31,7 +31,7 @@ function respond() {
     var textInPirate = talkLikeAPirate(request.text.substring(5));
     setTimeout(function() {
       postMessage(textInPirate);
-    }, 1000);
+    }, 5000);
     this.res.end();
   } else {
     console.log("don't care");
