@@ -23,13 +23,11 @@ function respond() {
 
   // statusCheck
   if (request.text && statusCheck.test(request.text)) {
-    
-      this.res.writeHead(200);
-      setTimeout(function() {
+    this.res.writeHead(200);
+    setTimeout(function() {
       postMessage("Ahoy Matey");
-      }, 5000);
-      this.res.end();
-    
+    }, 2000);
+    this.res.end(); 
   } else if (request.text && pirateTalk.test(request.text)) {
     this.res.writeHead(200);
     var textInPirate = talkLikeAPirate(request.text.substring(5));
